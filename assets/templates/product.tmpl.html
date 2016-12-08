@@ -1,0 +1,39 @@
+{{define "page.title"}}
+    {{if .IsNew}}
+        Nouveau produit
+    {{else}}
+        {{.Product.Name}}
+    {{end}}
+{{end}}
+
+{{define "page.nav"}}
+    {{if .IsNew}}
+        {{template "nav" "/products/new"}}
+    {{else}}
+        {{template "nav" ""}}
+    {{end}}
+{{end}}
+
+{{define "page.content"}}
+<h1>{{if .IsNew}}Nouveau produit{{else}}{{.Product.Name}}{{end}}</h1>
+<form class="form" method="POST" action="/products{{if not .IsNew}}/{{.Product.ID}}{{end}}">
+    <p>
+        <label for="name">Nom du produit</label>
+        <input type="text" id="name" name="name" value="{{.Product.Name}}" size="50" required>
+    </p>
+
+    <p>
+        <label for="slicable">Produit tranchable</label>
+        <input type="checkbox" id="slicable" name="slicable" value="true" {{if .Product.Slicable}}checked{{end}}>
+    </p>
+
+    <p>
+        <button type="submit">{{if .IsNew}}Ajouter{{else}}Sauvegarder{{end}}</button>
+        {{if not .IsNew}}
+            <button class="button--dangerous" type="submit" formmethod="POST" formaction="/delete/products/{{.Product.ID}}">Supprimer ce produit</button>
+        {{end}}
+    </p>
+</form>
+{{end}}
+
+{{template "page" .}}

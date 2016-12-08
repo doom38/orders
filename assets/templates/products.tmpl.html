@@ -1,0 +1,29 @@
+{{define "page.title"}}Liste des produits{{end}}
+
+{{define "page.nav"}}
+    {{template "nav" "/products"}}
+{{end}}
+
+{{define "page.content"}}
+<h1>Liste des produits</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nom du produit</td>
+            <td>Produit tranchable</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .}}
+            <tr id="{{.ID}}">
+                <td>
+                    <a href="/products/{{.ID}}">{{.Name}}</a>
+                </td>
+                <td>{{if .Slicable}}Oui{{else}}Non{{end}}</td>
+            </tr>
+        {{end}}
+    </tbody>
+</table>
+{{end}}
+
+{{template "page" .}}

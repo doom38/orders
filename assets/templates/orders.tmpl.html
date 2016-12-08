@@ -1,0 +1,65 @@
+{{define "page.title"}}Liste des commandes{{end}}
+
+{{define "page.nav"}}
+    {{template "nav" "/orders"}}
+{{end}}
+
+{{define "page.content"}}
+<h1>Liste des commandes</h1>
+<table class="table table--wide">
+    <thead>
+        <tr>
+            <td>Nom du client</td>
+            <td>Heure de retrait</td>
+            <td>Avec sac ?</td>
+            <td>Produits</td>
+            <td>Commentaires</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Orders}}
+        <tr id="{{.ID}}">
+            <td><a href="/orders/{{.ID}}">{{.CustomerName}}</a></td>
+            <td>{{.DueHour}}</td>
+            <td>{{if .WithBag}}Oui{{else}}Non{{end}}</td>
+            <td>
+                <ul class="list--undecorated">
+                    {{range .Matrix}}
+                    <li>
+                        <span>{{.Quantity}}</span>
+                        <span>{{.Product.Name}}</span> 
+                        {{if gt .Sliced 0}}
+                            <span>({{.Sliced}} tranché{{if gt .Sliced 1}}s{{end}})</span>
+                        {{end}}
+                    </li>
+                    {{end}}
+                </ul>
+            </td>
+            <td>{{.Comment}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+
+<h1>Totaux par produits</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Produits</td>
+            <td>Quantités</td>
+            <td>Tranchés</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Sums}}
+            <tr>
+                <td>{{.Product.Name}}</td>
+                <td>{{.Quantity}}</td>
+                <td>{{if .Product.Slicable}}{{.Sliced}}{{end}}</td>
+            </tr>
+        {{end}}
+    </tbody>
+</table>
+{{end}}
+
+{{template "page" .}}

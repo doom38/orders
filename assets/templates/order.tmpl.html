@@ -1,0 +1,117 @@
+{{define "page.title"}}{{if .IsNew}}Nouvelle commande{{else}}Commande n°{{.Order.ID}}{{end}}{{end}}
+
+{{define "page.nav"}}
+    {{if .IsNew}}
+        {{template "nav" "/orders/new"}}
+    {{else}}
+        {{template "nav" ""}}
+    {{end}}
+{{end}}
+
+{{define "page.content"}}
+<h1>{{if .IsNew}}Nouvelle commande{{else}}Commande n°{{.Order.ID}}{{end}}</h1>
+<form class="form" method="POST" action="/orders{{if not .IsNew}}/{{.Order.ID}}{{end}}">
+    <p>
+        <label for="name">Nom du client</label>
+        <input type="text" id="customer-name" name="customer-name" value="{{.Order.CustomerName}}" size="50" required>
+    </p>
+
+    <p>
+        <label for="due-hour">Heure de retrait</label>
+        <select id="due-hour" name="due-hour" required><option value="07:00"{{if eq .Order.DueHour "07:00"}} selected{{end}}>07:00</option>
+            <option value="07:15"{{if eq .Order.DueHour "07:15"}} selected{{end}}>07:15</option>
+            <option value="07:30"{{if eq .Order.DueHour "07:30"}} selected{{end}}>07:30</option>
+            <option value="07:45"{{if eq .Order.DueHour "07:45"}} selected{{end}}>07:45</option>
+            <option value="08:00"{{if eq .Order.DueHour "08:00"}} selected{{end}}>08:00</option>
+            <option value="08:15"{{if eq .Order.DueHour "08:15"}} selected{{end}}>08:15</option>
+            <option value="08:30"{{if eq .Order.DueHour "08:30"}} selected{{end}}>08:30</option>
+            <option value="08:45"{{if eq .Order.DueHour "08:45"}} selected{{end}}>08:45</option>
+            <option value="09:00"{{if eq .Order.DueHour "09:00"}} selected{{end}}>09:00</option>
+            <option value="09:15"{{if eq .Order.DueHour "09:15"}} selected{{end}}>09:15</option>
+            <option value="09:30"{{if eq .Order.DueHour "09:30"}} selected{{end}}>09:30</option>
+            <option value="09:45"{{if eq .Order.DueHour "09:45"}} selected{{end}}>09:45</option>
+            <option value="10:00"{{if eq .Order.DueHour "10:00"}} selected{{end}}>10:00</option>
+            <option value="10:15"{{if eq .Order.DueHour "10:15"}} selected{{end}}>10:15</option>
+            <option value="10:30"{{if eq .Order.DueHour "10:30"}} selected{{end}}>10:30</option>
+            <option value="10:45"{{if eq .Order.DueHour "10:45"}} selected{{end}}>10:45</option>
+            <option value="11:00"{{if eq .Order.DueHour "11:00"}} selected{{end}}>11:00</option>
+            <option value="11:15"{{if eq .Order.DueHour "11:15"}} selected{{end}}>11:15</option>
+            <option value="11:30"{{if eq .Order.DueHour "11:30"}} selected{{end}}>11:30</option>
+            <option value="11:45"{{if eq .Order.DueHour "11:45"}} selected{{end}}>11:45</option>
+            <option value="12:00"{{if eq .Order.DueHour "12:00"}} selected{{end}}>12:00</option>
+            <option value="12:15"{{if eq .Order.DueHour "12:15"}} selected{{end}}>12:15</option>
+            <option value="12:30"{{if eq .Order.DueHour "12:30"}} selected{{end}}>12:30</option>
+            <option value="12:45"{{if eq .Order.DueHour "12:45"}} selected{{end}}>12:45</option>
+            <option value="13:00"{{if eq .Order.DueHour "13:00"}} selected{{end}}>13:00</option>
+            <option value="13:15"{{if eq .Order.DueHour "13:15"}} selected{{end}}>13:15</option>
+            <option value="13:30"{{if eq .Order.DueHour "13:30"}} selected{{end}}>13:30</option>
+            <option value="13:45"{{if eq .Order.DueHour "13:45"}} selected{{end}}>13:45</option>
+            <option value="14:00"{{if eq .Order.DueHour "14:00"}} selected{{end}}>14:00</option>
+            <option value="14:15"{{if eq .Order.DueHour "14:15"}} selected{{end}}>14:15</option>
+            <option value="14:30"{{if eq .Order.DueHour "14:30"}} selected{{end}}>14:30</option>
+            <option value="14:45"{{if eq .Order.DueHour "14:45"}} selected{{end}}>14:45</option>
+            <option value="15:00"{{if eq .Order.DueHour "15:00"}} selected{{end}}>15:00</option>
+            <option value="15:15"{{if eq .Order.DueHour "15:15"}} selected{{end}}>15:15</option>
+            <option value="15:30"{{if eq .Order.DueHour "15:30"}} selected{{end}}>15:30</option>
+            <option value="15:45"{{if eq .Order.DueHour "15:45"}} selected{{end}}>15:45</option>
+            <option value="16:00"{{if eq .Order.DueHour "16:00"}} selected{{end}}>16:00</option>
+            <option value="16:15"{{if eq .Order.DueHour "16:15"}} selected{{end}}>16:15</option>
+            <option value="16:30"{{if eq .Order.DueHour "16:30"}} selected{{end}}>16:30</option>
+            <option value="16:45"{{if eq .Order.DueHour "16:45"}} selected{{end}}>16:45</option>
+            <option value="17:00"{{if eq .Order.DueHour "17:00"}} selected{{end}}>17:00</option>
+            <option value="17:15"{{if eq .Order.DueHour "17:15"}} selected{{end}}>17:15</option>
+            <option value="17:30"{{if eq .Order.DueHour "17:30"}} selected{{end}}>17:30</option>
+            <option value="17:45"{{if eq .Order.DueHour "17:45"}} selected{{end}}>17:45</option>
+            <option value="18:00"{{if eq .Order.DueHour "18:00"}} selected{{end}}>18:00</option>
+            <option value="18:15"{{if eq .Order.DueHour "18:15"}} selected{{end}}>18:15</option>
+            <option value="18:30"{{if eq .Order.DueHour "18:30"}} selected{{end}}>18:30</option>
+            <option value="18:45"{{if eq .Order.DueHour "18:45"}} selected{{end}}>18:45</option>
+            <option value="19:00"{{if eq .Order.DueHour "19:00"}} selected{{end}}>19:00</option>
+            </select>
+    </p>
+
+    <p>
+        <label for="with-bag">Commande avec sac</label>
+        <input type="checkbox" id="with-bag" name="with-bag" value="true" {{if .Order.WithBag}}checked{{end}}>
+    </p>
+
+    <p>
+        <label for="comment">Commentaire</label>
+        <textarea id="comment" name="comment" rows="10" cols="50" placeholder="Commentaire ..." cols="50">{{.Order.Comment}}</textarea>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Produits</td>
+                <td>Quantités</td>
+                <td>Tranchés</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Matrix}}
+                <tr>
+                    <td>{{.Product.Name}}</td>
+                    <td>
+                        <input type="number" min="0" id="{{.Product.ID}}.quantity" name="{{.Product.ID}}.quantity" value="{{.Quantity}}">
+                    </td>
+                    <td>
+                        {{if .Product.Slicable}}
+                            <input type="number" min="0" id="{{.Product.ID}}.sliced" name="{{.Product.ID}}.sliced" value="{{.Sliced}}">
+                        {{end}}
+                    </td>
+                </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    <p>
+        <button type="submit">{{if .IsNew}}Ajouter{{else}}Sauvegarder{{end}}</button>
+        {{if not .IsNew}}
+            <button class="button--dangerous" type="submit" formmethod="POST" formaction="/delete/orders/{{.Order.ID}}">Supprimer cette commande</button>
+        {{end}}
+    </p>
+</form>
+{{end}}
+
+{{template "page" .}}

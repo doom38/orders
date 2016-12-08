@@ -1,0 +1,28 @@
+{{define "nav"}}
+    <a class="page-nav__item" {{if ne . "/orders"}}href="/orders"{{end}}>Liste des commandes</a>
+    <a class="page-nav__item" {{if ne . "/products"}}href="/products"{{end}}>Liste des produits</a>
+    <a class="page-nav__item" {{if ne . "/products/new"}}href="/products/new"{{end}}>Ajouter un produit</a>
+    <a class="page-nav__item" {{if ne . "/orders/new"}}href="/orders/new"{{end}}>Ajouter une commande</a>
+{{end}}
+
+{{define "page"}}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link type="text/css" rel="stylesheet" href="/assets/css/default.css">
+        <link type="text/css" rel="stylesheet" media="print" href="/assets/css/print.css">
+        <title>{{block "page.title" .}}Orders{{end}}</title>
+    </head>
+    <body class="body">
+        <nav class="page-nav">
+            {{block "page.nav" .}}
+                <a class="page-nav__item" href="/products">Liste des produits</a>
+                <a class="page-nav__item" href="/products/new">Ajouter un produit</a>
+                <a class="page-nav__item" href="/orders">Liste des commandes</a>
+                <a class="page-nav__item" href="/orders/new">Ajouter une commande</a>
+            {{end}}
+        </nav>
+        <main class="main">{{template "page.content" .}}</main>
+    </body>
+</html>
+{{end}}

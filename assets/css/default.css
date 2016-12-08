@@ -1,0 +1,115 @@
+/*
+ * Colours:
+ * - Primary-dark:  #40362E
+ * - Primary-light: #D9BEB8
+ * - Accent-dark:   #314E59
+ * - Accent-light:  #348A94
+ * - Lightest:      #FFF;
+ */
+
+@font-face {
+  font-family: 'roboto';
+  font-style: normal;
+  src: url('/assets/fonts/Roboto-Regular.ttf');
+}
+
+.body {
+    font-family: 'roboto';
+    background-color: #FFF;
+    color: #40362E;
+    margin: 0;
+}
+
+.page-nav {
+    display: block;
+    border-bottom: 1px solid #D9BEB8;
+}
+
+.page-nav__item {
+    display: inline-block;
+    line-height: 2rem;
+    
+    padding: 0 5px 3px 5px;
+    margin-bottom: -1px;
+    
+    text-align: center;
+    vertical-align: middle;
+
+    text-decoration: none;
+    cursor: pointer;
+    color: #40362E;
+}
+
+.page-nav__item:not([href]) {
+    font-weight: bold;
+    color: #40362E;
+
+    cursor: not-allowed;
+
+    padding-bottom: 0;
+    border-bottom: 3px solid #40362E;
+}
+
+.page-nav__item[href]:hover {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #40362E;
+}
+
+.main {
+    display:block;
+    margin: 0 3rem 3rem 3rem;
+}
+
+h1 {
+    margin-bottom: 0.1em; 
+    color: #40362E;
+}
+
+.table {
+    border-collapse: collapse;
+    border: 1px solid #40362E;
+}
+
+.table--wide {
+    width: 100%;
+}
+
+.table thead {
+    font-weight: bold;
+
+    color: white;
+    background-color: #40362E;
+}
+
+.table td {
+    vertical-align: top;
+    padding: 5px 10px;
+}
+
+.table tbody tr:not(:first-child) {
+    border-top: 1px dashed #40362E;
+}
+
+.table thead td:not(:first-child) {
+    border-left: 1px solid white;
+}
+
+.table tbody td:not(:first-child) {
+    border-left: 1px solid #40362E;
+}
+
+.list--undecorated {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.form label {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 150px;
+}
+
+.button--dangerous {
+    color: red;
+}
