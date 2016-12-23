@@ -1,4 +1,16 @@
 
 .page-nav {
+    /* Hide the navigation pane */
     display: none;
+}
+
+a {
+    /* Disable the link style */
+    color: #40362E;
+    text-decoration: none;
+}
+
+h1 {
+    /* Each section must start on a new page */
+    page-break-before: always;
 }
